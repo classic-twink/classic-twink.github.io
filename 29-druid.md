@@ -1,17 +1,12 @@
 ## suffixes
-- weapon: Acrobatic Staff Healing + 31
-- belt: Ghostwalker Belt Healing (+24)
+- belt: Ghostwalker Belt Healing (+24) (got clothy)
 - hands: Headhunter's Mitts Healing +24
 - helm: Pathfinder Hat Stamina 14 / Tiger 9/9 / Bear? Falcon?
 - neck: Tundra Necklace Tiger 5/5
 - wrist: Archer's Bracers Healing +18
 
-## green LqE
-- neck: crystal starfire medallion
-
 ## rare LqE
 - ring: Plains Ring
-
 
 ## quests
 | min lvl | recommanded lvl | wowhead-link | xp | note |
@@ -24,18 +19,3 @@
 | 28 | 28 | [tiger-mastery](https://classic.wowhead.com/quest=188/tiger-mastery) | | |
 | 29 | 29 | [the-crone-of-the-kraul](https://classic.wowhead.com/quest=1101/the-crone-of-the-kraul) | 4700xp | |
 | 29 | 29 | [safety-first](https://classic.wowhead.com/quest=1189/safety-first) | 12350xp | |
-
-## drops
-
-### gnome
-- Acidic Walkers
-- Manual Crowd Pummeler
-
-### mona
-- Beguiler Robes
-
-### razor
-- Wind Spirit Staff
-
-### shadowfang
-- Silverlaine's Family Seal
