@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>share items</title>
+<style>
+html, body {
+  font-family: monospace;
+  background: #111;
+  color: #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+  display: block;
+  width: 44px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: #333;
+  box-shadow: inset #111 0px 1px 7px 11px;
+}
+#items {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 810px;
+}
+
+#info {
+  margin-bottom: 5px;
+}
+
+.q1 del { filter: brightness(2) }
+.q2 del { filter: sepia(1) hue-rotate(50deg) saturate(4) }
+.q3 del { filter: sepia(1) hue-rotate(180deg) saturate(4) }
+.q4 del { filter: sepia(1) hue-rotate(233deg) saturate(4) }
+.q5 del { filter: sepia(1) hue-rotate(340deg) saturate(4) }
+</style>
+<link type="text/css" href="https://wow.zamimg.com/css/basic.css?&amp;14" rel="stylesheet">
+<link type="text/css" href="https://wow.zamimg.com/css/global/icon.css" rel="stylesheet">
+</head>
+<body>
+<div id="info">
+  items of <span id="name">player</span> <span id="race">race</span> on <span id="realm">realm</span>
+  <a href=""></a>
+</div>
+<div id="items">
+</div>
+<script>
+const whTooltips = {
+  colorLinks: true,
+  renameLinks: true,
+  iconizeLinks: true,
+  iconSize: 'medium',
+}
+
+const digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+const format = ([a,b,c]) => [a,b,c].map(base62)
+const base62 = str => str
+  ? str.split('').reduceRight((t,n,i) => t + 62 ** (str.length-(i+1)) * digits.indexOf(n), 0)
+  : 0
+
+const itemsElement = document.getElementById('items')
+const params = Object.fromEntries(new URLSearchParams(location.search))
+document.getElementById('name').textContent = params.name
+document.getElementById('race').textContent = params.race
+document.getElementById('realm').textContent = params.realm
+
+
+for (const [id, rand, ench] of params.items.split(',').map(i => format(i.split('.')))) {
+  const a = document.createElement('a')
+  a.href = `https://classic.wowhead.com/item=${id}`
+  a.dataset.wowhead = new URLSearchParams({rand, ench})
+  itemsElement.appendChild(a)
+}
+
+</script>
+<script src="https://wow.zamimg.com/widgets/power.js"></script>
+</body>
+</html>
