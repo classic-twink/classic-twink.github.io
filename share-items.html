@@ -11,13 +11,17 @@ html, body {
   flex-direction: column;
   align-items: center;
 }
+
 a {
   text-decoration: none;
-  display: block;
-  width: 44px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+#items a {
+  display: block;
+  width: 44px;
   background: #333;
   box-shadow: inset #111 0px 1px 7px 11px;
 }
@@ -25,10 +29,19 @@ a {
   display: flex;
   flex-wrap: wrap;
   max-width: 810px;
+  justify-content: center;
 }
 
 #info {
   margin-bottom: 5px;
+  text-align: center;
+}
+#info a {
+  color:#ecd93a;
+}
+
+#info a:hover {
+  text-decoration: underline;
 }
 
 .q1 del { filter: brightness(2) }
@@ -42,8 +55,12 @@ a {
 </head>
 <body>
 <div id="info">
-  items of <span id="name">player</span> <span id="race">race</span> on <span id="realm">realm</span>
-  <i><a href="https://www.curseforge.com/wow/addons/share-items">install the add on</a></i>
+  <span id="name">player</span>
+  <br />
+  <span id="race">race</span> - <span id="realm">realm</span>
+  <br />
+  <br />
+  <a href="https://www.curseforge.com/wow/addons/share-items">get the add on</a> to share your own
 </div>
 <div id="items">
 </div>
