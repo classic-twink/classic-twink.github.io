@@ -44,6 +44,17 @@ a {
   text-decoration: underline;
 }
 
+#items a::before {
+  content: attr(data-count);
+  display: block;
+  z-index: 1;
+  position: absolute;
+  margin-top: 26px;
+  margin-left: 32px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  color: white;
+}
+
 .q1 del { filter: brightness(2) }
 .q2 del { filter: sepia(1) hue-rotate(50deg) saturate(4) }
 .q3 del { filter: sepia(1) hue-rotate(180deg) saturate(4) }
@@ -73,7 +84,6 @@ const whTooltips = {
 }
 
 const digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-const format = ([a,b,c]) => [a,b,c].map(base62)
 const base62 = str => str
   ? str.split('').reduceRight((t,n,i) => t + 62 ** (str.length-(i+1)) * digits.indexOf(n), 0)
   : 0
@@ -84,11 +94,17 @@ document.getElementById('name').textContent = params.name
 document.getElementById('race').textContent = params.race
 document.getElementById('realm').textContent = params.realm
 
+const parse = i => {
+  const [ data, count = '1' ] = i.split('*')
+  const [id, rand, ench ] = data.split('.')
+  return [id, rand, ench, count].map(base62)
+}
 
-for (const [id, rand, ench] of params.items.split(',').map(i => format(i.split('.')))) {
+for (const [id, rand, ench, count] of params.items.split(',').map(parse)) {
   const a = document.createElement('a')
   a.href = `https://classic.wowhead.com/item=${id}`
   a.dataset.wowhead = new URLSearchParams({rand, ench})
+  a.dataset.count = count > 1 ? count : ''
   itemsElement.appendChild(a)
 }
 
